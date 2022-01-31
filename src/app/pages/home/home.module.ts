@@ -12,9 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { HomeComponent } from './home.component';
+import { UserDialogComponent } from './presentational/user-dialog/user-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, UserDialogComponent],
   imports: [
     HomeRoutingModule,
     CommonModule,
@@ -28,6 +33,14 @@ import { HomeComponent } from './home.component';
     FormsModule,
     MatListModule,
     MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatInputModule
+  ],
+  entryComponents: [
+    UserDialogComponent,
   ]
 })
 export class HomeModule { }

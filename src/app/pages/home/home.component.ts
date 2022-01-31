@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { delay } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { UserDialogComponent } from './presentational/user-dialog/user-dialog.component';
 
 @Component({
   selector: 'ngx-home',
@@ -13,7 +15,8 @@ export class HomeComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   showMenu = false;
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver,
+    private dialog: MatDialog) {}
   open(menu: { openMenu: () => void; }){
     menu.openMenu();
     }
@@ -31,5 +34,28 @@ export class HomeComponent {
           this.sidenav.open();
         }
       });
+  }
+  createUser(){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    // dialogConfig.data = {
+    //   name : string,
+    //   email: string
+    // };
+
+    const dialogRef = this.dialog.open(UserDialogComponent,
+      dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(
+      val => {
+        console.log('Dialog output:', val);
+        // this.loadKangalsPage();
+      },
+
+    );
   }
 }

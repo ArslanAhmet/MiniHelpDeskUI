@@ -9,14 +9,7 @@
       <mat-icon *ngIf="sidenav.opened"> menu_open </mat-icon>
     </button>
   </span>
-  <!-- <span class="header-trigger">
-    <button class="trigger" mat-button [matMenuTriggerFor]="menu">Menu</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
-  </span> -->
-  <button
+   <button
     class="trigger"
     #r="matMenuTrigger"
     mat-icon-button
@@ -28,7 +21,7 @@
     <button mat-menu-item>
       <span>Ticket</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="createUser()">
       <span>User</span>
     </button>
     <button mat-menu-item>
