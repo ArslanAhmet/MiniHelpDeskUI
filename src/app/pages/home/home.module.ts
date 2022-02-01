@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [HomeComponent, UserDialogComponent],
@@ -37,7 +38,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    StoreModule.forFeature('home',{})
   ],
   entryComponents: [
     UserDialogComponent,
