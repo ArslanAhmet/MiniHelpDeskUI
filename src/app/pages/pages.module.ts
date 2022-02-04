@@ -5,6 +5,9 @@ import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
 import { PagesRoutingModule } from './pages-routing.module';
 
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './login/state/user.reducer';
+
 
 @NgModule({
   declarations: [
@@ -13,8 +16,8 @@ import { PagesRoutingModule } from './pages-routing.module';
   imports: [
     PagesRoutingModule,
     CommonModule,
-
-    RouterModule
+    RouterModule,
+    StoreModule.forFeature('users', userReducer)
   ]
 })
 export class PagesModule { }

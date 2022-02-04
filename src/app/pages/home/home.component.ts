@@ -5,6 +5,8 @@ import { delay } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserDialogComponent } from './presentational/user-dialog/user-dialog.component';
 
+import { Store } from '@ngrx/store';
+import { UserItem } from 'src/app/shared/models';
 @Component({
   selector: 'ngx-home',
   templateUrl: './home.component.html',
@@ -52,7 +54,7 @@ export class HomeComponent {
 
     dialogRef.afterClosed().subscribe(
       val => {
-        console.log('Dialog output:', val);
+
         // this.loadKangalsPage();
       },
 

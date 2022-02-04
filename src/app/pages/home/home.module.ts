@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { StoreModule } from '@ngrx/store';
+import { userReducer } from './store/reducers/home-reducers';
 
 @NgModule({
   declarations: [HomeComponent, UserDialogComponent],
@@ -39,7 +40,7 @@ import { StoreModule } from '@ngrx/store';
     MatCardModule,
     ReactiveFormsModule,
     MatInputModule,
-    StoreModule.forFeature('home',{})
+    StoreModule.forFeature('home',userReducer)
   ],
   entryComponents: [
     UserDialogComponent,
