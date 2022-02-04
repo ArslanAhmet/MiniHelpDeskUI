@@ -1,33 +1,16 @@
-import { createSelector } from '@ngrx/store';
-import * as fromFeature from '../reducers/';
-import * as fromUser from '../reducers/User.reducer';
-import * as fromAppRoot from '../../../../store';
-import { UserItem } from '../../../../shared/models';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { State } from '../reducers/';
 
-export const getCompleteUserState = createSelector(
-  fromFeature.getUserState,
-  (state: fromFeature.HomeState) => state.kangals,
-);
-
-export const getAllUserEntities = createSelector(
-  getCompleteUserState,
-  fromUser.getUserItemEntities,
-);
-
-export const getUserItemsLoaded = createSelector(
-  getCompleteUserState,
-  fromUser.getUserItemsLoaded,
-);
-
-export const getPaginationHeader = createSelector(
-  getCompleteUserState,
-  fromUser.getPaginationHeader,
-);
-
+const getUserState = createFeatureSelector<State>('home');
 
 export const getAllUsers = createSelector(
-  getAllUserEntities,
-  entities => {
-    return Object.keys(entities).map(id => entities[id]);
-  }
+  getUserState,
+  state => state.home.entities,
 );
+
+
+export const getPaginationHeader = createSelector(
+  getUserState,
+  state => state.home.paginationHeader,
+);
+

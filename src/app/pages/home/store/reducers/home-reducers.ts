@@ -1,5 +1,5 @@
 import { Action, createReducer, on, createFeatureSelector, createSelector } from '@ngrx/store';
-import * as userActions from '../actions/home-actions';
+import * as homeActions from '../actions/home-actions';
 import { UserItem } from '../../../../shared/models';
 import * as AppState from '../../../../state/app.state';
 
@@ -23,8 +23,8 @@ export const initialState: HomeReducerState = {
 const homeReducerInternal = createReducer<HomeReducerState>(
   initialState,
   on(
-    userActions.addUserSuccess,
-    userActions.updateUserSuccess,
+    homeActions.addUserSuccess,
+    homeActions.updateUserSuccess,
     (state : HomeReducerState , { payload }): HomeReducerState => {
       const entities = {
         ...state.entities,
@@ -37,13 +37,13 @@ const homeReducerInternal = createReducer<HomeReducerState>(
       };
     },
   ),
-  on(userActions.setPaginationHeader, (state, { payload }): HomeReducerState => {
+  on(homeActions.setPaginationHeader, (state, { payload }): HomeReducerState => {
        return {
       ...state,
       paginationHeader: payload,
     };
   }),
-  on(userActions.loadUserSuccess, (state, { payload }): HomeReducerState => {
+  on(homeActions.loadUserSuccess, (state, { payload }): HomeReducerState => {
     const entities: { [id: string]: UserItem } = {};
 
     for (const entity of payload.value) {
@@ -57,7 +57,7 @@ const homeReducerInternal = createReducer<HomeReducerState>(
     };
   }),
 
-  on(userActions.deleteUserSuccess, (state, { payload }): HomeReducerState => {
+  on(homeActions.deleteUserSuccess, (state, { payload }): HomeReducerState => {
     const userItem = payload;
     const { [userItem.id]: removed, ...entities } = state.entities;
 

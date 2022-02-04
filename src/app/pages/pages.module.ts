@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { PagesRoutingModule } from './pages-routing.module';
 
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './login/state/user.reducer';
 
 
 @NgModule({
@@ -16,8 +15,7 @@ import { userReducer } from './login/state/user.reducer';
   imports: [
     PagesRoutingModule,
     CommonModule,
-    RouterModule,
-    StoreModule.forFeature('users', userReducer)
+    RouterModule
   ]
 })
 export class PagesModule { }
