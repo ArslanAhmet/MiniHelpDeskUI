@@ -1,8 +1,8 @@
 <mat-dialog-content >
-  <form novalidate [formGroup]="userForm" >
+  <form novalidate [formGroup]="personForm" >
     <mat-card fxFlexFill>
       <mat-card-header>
-        <mat-card-title> Add new user </mat-card-title>
+        <mat-card-title> Add New User </mat-card-title>
       </mat-card-header>
 
       <div
@@ -41,8 +41,8 @@
           <button
             mat-button
             color="primary"
-            [disabled]="!userForm.valid"
-            (click)="saveUser(userForm.value)"
+            [disabled]="!personForm.valid"
+            (click)="saveUser(personForm.value)"
           >
             <mat-icon>save</mat-icon> Kaydet
           </button>

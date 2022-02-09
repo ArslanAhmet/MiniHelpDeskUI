@@ -1,6 +1,6 @@
-import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { PersonDialogComponent } from './person-dialog/person-dialog.component';
 
 
 export const allPresComponents: any[] = [
-  UserDialogComponent,
+  PersonDialogComponent,
 ];

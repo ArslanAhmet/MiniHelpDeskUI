@@ -3,14 +3,8 @@ import { State } from '../reducers/';
 
 const getUserState = createFeatureSelector<State>('home');
 
-export const getAllUsers = createSelector(
+export const getCurrentUserId = createSelector(
   getUserState,
-  state => state.home.entities,
-);
-
-
-export const getPaginationHeader = createSelector(
-  getUserState,
-  state => state.home.paginationHeader,
+  state => state.home.currentPersonId
 );
 

@@ -12,16 +12,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { HomeComponent } from './home.component';
-import { UserDialogComponent } from './presentational/user-dialog/user-dialog.component';
+import { PersonDialogComponent } from './presentational/person-dialog/person-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/reducers/home-reducers';
+import { personReducer } from './store/reducers/home-reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { HomeEffects } from './store/effects';
 
 @NgModule({
-  declarations: [HomeComponent, UserDialogComponent],
+  declarations: [HomeComponent, PersonDialogComponent],
   imports: [
     HomeRoutingModule,
     CommonModule,
@@ -40,10 +42,11 @@ import { userReducer } from './store/reducers/home-reducers';
     MatCardModule,
     ReactiveFormsModule,
     MatInputModule,
-    StoreModule.forFeature('home',userReducer)
+    StoreModule.forFeature('home',personReducer),
+    EffectsModule.forFeature([HomeEffects])
   ],
   entryComponents: [
-    UserDialogComponent,
+    PersonDialogComponent,
   ]
 })
 export class HomeModule { }

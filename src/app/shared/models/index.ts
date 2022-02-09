@@ -1,2 +1,2 @@
-export * from './user-item';
+export * from './person-item';
 export * from './model.descriptor';
