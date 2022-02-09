@@ -12,42 +12,32 @@ import { State } from '../../store/reducers/home-reducers';
   styleUrls: ['./person-dialog.component.scss']
 })
 export class PersonDialogComponent implements OnInit {
-  personId!: string;
-  personName!: string;
-  personEmail!: string;
   personForm!: FormGroup;
   constructor(private fb: FormBuilder,
     private dialogRef: MatDialogRef<PersonDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data: PersonItem,
+    @Inject(MAT_DIALOG_DATA) { Name, Email}: PersonItem,
     private store: Store<State>) {
 
      }
 
   ngOnInit(): void {
     this.personForm = this.fb.group({
-      name: [this.personName, [Validators.required,
-      Validators.min(0)]],
-      email: [this.personEmail, [Validators.required,
-      Validators.email]],
+      Name: ['', [Validators.required, Validators.min(0)]],
+      Email: ['', [Validators.required,  Validators.email]],
     });
+
   }
-  saveUser(formValues: { personName: any; personEmail: any; }) {
+  saveUser(formValues:any) {
     let personItem: PersonItem = {
       id: 0,
-      name: formValues.personName,
-      email: formValues.personEmail,
-      isSent: false
+      Type:1,
+      Name: formValues.Name,
+      Email: formValues.Email,
+      Language:''
     };
-
-    console.log('saveUser sonuc : ' + JSON.stringify(personItem));
-    
     this.store.dispatch(HomePageActions.createPerson( {payload: personItem} ))
 
-    // this.userService.updateKangal(this.kangalId, kangal).subscribe(
-    //   result => {
-    //     this.dialogRef.close(kangal);
-    //   }
-    // );
+    this.dialogRef.close( {payload: personItem});
 
   }
   dismiss() {

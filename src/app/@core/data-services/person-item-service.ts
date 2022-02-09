@@ -27,6 +27,7 @@ export class PersonItemService {
 
   createPersonItem(person: PersonItem): Observable<PersonItem> {
     console.log('personsUrl: ' + this.personsUrl)
+    console.log('person : ' + JSON.stringify(person));
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // PersonItem Id must be null for the Web API to assign an Id
     const newPersonItem = { ...person, id: null };

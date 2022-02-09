@@ -1,7 +1,7 @@
 export class PersonItem {
   public id!: number ;
-  public name!: string;
-  public email!: string;
-  public isSent!: boolean;
-
+  public Name!: string;
+  public Language!: string;
+  public Type!: number ;
+  public Email!: string;
 }

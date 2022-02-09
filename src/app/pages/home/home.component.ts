@@ -7,6 +7,7 @@ import { PersonDialogComponent } from './presentational/person-dialog/person-dia
 
 import { Store } from '@ngrx/store';
 import { PersonItem } from 'src/app/shared/models';
+import { Router } from '@angular/router';
 @Component({
   selector: 'ngx-home',
   templateUrl: './home.component.html',
@@ -18,10 +19,11 @@ export class HomeComponent {
   sidenav!: MatSidenav;
   showMenu = false;
   constructor(private observer: BreakpointObserver,
-    private dialog: MatDialog) {}
-  open(menu: { openMenu: () => void; }){
+    private dialog: MatDialog,
+    private router: Router) { }
+  open(menu: { openMenu: () => void; }) {
     menu.openMenu();
-    }
+  }
 
   ngAfterViewInit() {
     this.observer
@@ -37,25 +39,25 @@ export class HomeComponent {
         }
       });
   }
-  createUser(){
+  createUser() {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    // dialogConfig.data = {
-    //   name : string,
-    //   email: string
-    // };
+    dialogConfig.data = {
+      Name: '',
+      Email: ''
+    };
 
     const dialogRef = this.dialog.open(PersonDialogComponent,
       dialogConfig);
 
-
     dialogRef.afterClosed().subscribe(
       val => {
-
+        console.log('kapatınca bu mesal geldi: ' + JSON.stringify(val));
         // this.loadKangalsPage();
+        this.router.navigate(['/products']);
       },
 
     );
